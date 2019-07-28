@@ -1,0 +1,45 @@
+package task2.junyemao;
+
+import java.util.Scanner;
+
+public class task2 {
+    
+    public static void main(String[] args) {
+        
+    Scanner input = new Scanner(System.in);
+    Scanner input2 = new Scanner(System.in);//Declare two Scanner and instantiate them as input and input2.
+    
+    System.out.print("Input a place name:   ");
+    String name = input.nextLine(); // Declare string variable name and initialise it with the value user entering in console which is stored in object input.
+    System.out.print("Input another place name:   ");
+    String name2 = input.next();// Same as above.
+    System.out.print("Input a number:   ");
+    int num = input.nextInt(); //Same.
+    System.out.print("Input a name of a kind of thing:   ");
+    String name3 = input.next();//Same.
+    System.out.print("Input another name of a kind of thing:   ");
+    String name4 = input.next();//Same.
+    System.out.print("Input a year:   "); 
+    String time = input.next();//Same.
+    System.out.print("Input the times that you want the story repeat:   ");
+    int times = input2.nextInt();   //Same
+    
+    
+    System.out.println(" ");
+    System.out.println("Your story:   ");
+    for(int a = times;a>0;a--){
+    
+    
+        if(num>1)  { 
+    
+    System.out.println("Long time ago,there was a "+name2+" in the "+name+". In the "+name+" ,there were "+num+" "+name3+"s"+" and "+num+" "+name4+"s"+" living in it. "+"In "+time+", "+name3+"s"+" told "+name4+"s"+" a story.");
+    }else{
+   
+    System.out.println("Long time ago,there was a "+name2+" in the "+name+". In the "+name+" ,there were "+num+" "+name3+" and "+num+" "+name4+" living in it. "+"In "+time+", "+name3+" told "+name4+" a story.");
+    }// judge if num is greater than 1 print something,otherwise print out other thing.
+    
+    }// Declare int variable a and initialise it with the variable times.when a is greater than zero do if judgement,and a is decreased by one, else stop for loop .
+        
+    }   
+}
+

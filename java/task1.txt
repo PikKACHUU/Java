@@ -1,0 +1,23 @@
+package task1.junyemao;
+
+import java.util.Scanner;
+public class task1 {
+
+        public static void main(String[] args) {
+        System.out.println("A fathom is an old imperial measure of water depth.(1 fathom = 1.8288m)\n");
+        System.out.println("This programmer can help you make unit conversion in a specified range that you entered in.\n");       
+        System.out.println("Please enter in the lowest value.(PLEASE TYPE IN Positive Interger)");
+        Scanner lowest = new Scanner(System.in); //Declare Scanner and instantiate it as object lowest.
+        int a = lowest.nextInt();// Declare a variable a and initialise it with the value entered in by users.It is the lowest number in the range.
+        System.out.println("Please enter in the largest value.(PLEASE TYPE IN Positive Interger)");
+        Scanner largest = new Scanner(System.in);//Declare Scanner and instantiate it as object largest.
+        int b = largest.nextInt();//Declare a variable a and initialise it with the value entered in by users. It is the largest number in the range.
+        
+        System.out.println("Fathoms          Metres");
+        for(int i = a; a<=b;a++ ){
+        System.out.println(a+"                "+a*1.8288);
+        }// initialise variable i as a ,and when variable a is less or equal to variable b,print out something,and increase a by 1.
+        
+    }
+    
+}

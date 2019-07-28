@@ -1,0 +1,63 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package task4a.newpackage;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.util.Arrays;
+/**
+ *
+ * @author joelewis
+ */
+public class Dice {
+    
+    Point location;
+    Dimension size;
+     
+       
+    public BufferedImage myImage;
+   
+    
+    
+    public Dice( Point loc, Dimension size,int index){
+        String []imagePath = new String[6];
+        imagePath[0] = "/Users/junye.mao/Desktop/1.jpg";
+        imagePath[1] = "/Users/junye.mao/Desktop/2.jpg";
+        imagePath[2] = "/Users/junye.mao/Desktop/3.jpg";
+        imagePath[3] = "/Users/junye.mao/Desktop/4.jpg";
+        imagePath[4] = "/Users/junye.mao/Desktop/5.jpg";
+        imagePath[5] = "/Users/junye.mao/Desktop/6.jpg";
+        loadImage(imagePath[index-1]);
+        this.location = loc;
+        this.size = size;
+        
+    }
+    
+    private void loadImage(String imagePath){     
+        try {
+            myImage = ImageIO.read(new File(imagePath));
+            
+        } catch (IOException e) {
+            System.out.println("Dice: problem loading image");
+            e.printStackTrace();
+        }
+    }
+    
+   
+    
+    public void paintDice(Graphics g, ImageObserver io){
+        g.drawImage(myImage, location.x, location.y, size.width, size.height, io);
+        //System.out.println("Sprite paint called");
+    }
+}
+

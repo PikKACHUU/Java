@@ -1,0 +1,35 @@
+
+package task3.junyemao;
+import java.util.Scanner;
+public class task3 {
+
+       public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);//Decalre Scanner in the constructor and instantiate it with object input.
+        System.out.print("input: ");
+        long num1 = input.nextLong();// Declare long type variable num1 and initialise it with the value in object input.
+        long day = num1/86400;// Declare long type variable day and initialise it with a equation.
+        long hour = num1%86400/3600;// Declare long type variable hour and initialise it with a equation.
+        long minute= num1%86400%3600/60;// Declare long type variable minute and initialise it with a equation.
+        long second = num1%86400%3600%60;// Declare long type variable second and initialise it with a equation.
+        if(day>1)
+        System.out.print("output: "+day+" days");
+        else
+        System.out.print("output: "+day+" day");
+        // judge whether variable day is greater than one,and print out something.
+        if(hour>1)
+         System.out.print("  "+hour+" hours");
+        else
+            System.out.print("  "+hour+" hour");
+        //judge whether variable hour is greater than one,and print out something.
+        if(minute>1)
+         System.out.print("  "+minute+" minutes");
+        else
+            System.out.print("  "+minute+" minute");
+//judge whether variable minute is greater than one,and print out something.
+        if(second>1)
+         System.out.print("  "+second+" seconds");
+        else
+            System.out.print("  "+second+" second");
+    }
+    //judge whether variable second is greater than one,and print out something.
+}
