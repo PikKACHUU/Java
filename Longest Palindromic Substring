@@ -1,0 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package LPS;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ *
+ * @author junye.mao
+ */
+public class LPS {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        String s = "aaaaahbhssjbbbbsh";
+        String a = Solution.longestPalindrome(s);
+        System.out.println(a);// TODO codae application logic here
+    }
+    static class Solution {
+    public static String longestPalindrome(String s) {
+        String result = "";
+        int results = 0;
+        ArrayList <Character> list = new ArrayList <Character>();
+        int i,j,m=0,n=0;
+        
+        for(i=0; i<s.length();i++){
+            list.clear();
+            list.add(s.charAt(i));
+            char test = list.get(0);
+            for(j=i+1;j<s.length(); j++){
+          if(test != s.charAt(j) ){
+            list.add(s.charAt(j));}
+          else{
+              list.add(s.charAt(j));
+              //results = Math.max(results , list.size());
+              if(results<list.size()){
+              results = list.size();
+              m = i;
+              n = j;        
+              }
+          } 
+        }
+        }
+        System.out.print(results);
+        result = s.substring(m,n+1);
+        return result;
+    }
+}
+}
