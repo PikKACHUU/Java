@@ -1,0 +1,62 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package 无重复字符的最长字符串;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ *
+ * @author junye.mao
+ */
+public class LNDS {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static int LengthOfLongestSubString(String s){
+    int length = s.length();
+    int result = 0, StartInd = 0, EndInd = 0;
+    Set<Character> substring = new HashSet<>();
+    while(StartInd < length && EndInd < length){
+    if(!substring.contains(s.charAt(EndInd))){
+    substring.add(s.charAt(EndInd++));
+    result = Math.max(result, EndInd - StartInd);
+    }else{
+    substring.remove(s.charAt(StartInd++));
+    } 
+    }
+    return result;
+    }
+    public int LengthOfLongestSubString2(String s){
+    int length = s.length();
+    int result=0 ;
+    for(int n = 0; n<length; n++){
+     for(int m = n+1; m<=length; m++){
+     if(judge(s,n,m))
+         result = Math.max(result,m-n);
+    }
+    }
+    return result;
+    }
+    public  boolean judge(String s, int startInd , int endInd){
+    Set<Character> set = new HashSet<>();
+        for(int i = startInd; i<endInd; i++){
+        if(set.contains(s.charAt(startInd))) return false;
+        set.add(s.charAt(startInd));
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        String a = "aabbddhhsdfe";
+        int b = LNDS.LengthOfLongestSubString(a);
+        System.out.println(b);
+        
+ // TODO code application logic here
+    }
+    
+}
