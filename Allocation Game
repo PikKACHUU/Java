@@ -1,0 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package solution;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ *
+ * @author junye.mao
+ */
+
+public class Solution {
+    public int candy(int[] ratings) {
+        if(ratings.length==1||ratings.length==0)return ratings.length;
+        //初始化,pre是前一个的发糖数量
+        int ans=0,pre=0;
+        boolean f=true;
+        int i=0;
+        while(i<ratings.length-1){             
+            //上升处理
+            boolean u=false;
+            while((i<ratings.length-1)&&ratings[i]<ratings[i+1]){
+                ans+=pre+1;
+                pre++;
+                i++;
+                u=true;
+            }
+            //如果最初是上升趋势
+            if(u==true&&f==true){
+                ans+=pre+1;
+                pre++; u=false;
+            }            
+
+            //相等情况的处理
+            int ping=0;
+            while((i<ratings.length-1)&&ratings[i]==ratings[i+1]){
+                f=false;
+                ping++;
+                //如果最初是相等的情况
+                if(i==0)ping++;
+                if(ratings.length==i+2){
+                    i++;ans+=ping;
+                    break;
+                }         
+                if(ratings[i+1]!=ratings[i+2]){
+                    ans+=ping;
+                    pre=1;
+                }                
+                i++;
+            }
+            
+            //下降处理
+            int n=0;
+            boolean flag=false;            
+            while((i<ratings.length-1)&&ratings[i]>ratings[i+1]){
+                n++;
+                i++;
+                flag=true;
+                f=false;
+            }
+            if(flag==true){
+                ans+=(n*n+n)/2;
+                if(n>=pre)ans+=n+1-pre;
+                pre=1;
+            }                     
+        }
+        return ans;
+    }
+}
