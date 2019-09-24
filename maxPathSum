@@ -1,0 +1,45 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+
+    private static int maxV = 0;
+
+    public static int maxPathSum(TreeNode root) {
+        if(root==null) return 0;
+        maxV = root.val;
+        getMaxValue(root);
+        return maxV;
+    }
+
+    //获取最大的值
+    private static int getMaxValue(TreeNode root) {
+
+        if(root==null) return 0;
+
+        int left = getMaxValue(root.left);
+        int right = getMaxValue(root.right);
+
+        //自己和左子树最大值
+        int leftValue = left+root.val;
+
+        //自己和右子树最大值
+        int rigthValue = right+root.val;
+
+        //自己和左右子树最大值
+        int value = root.val+left+right;
+
+
+        //最大值，包括左子树最大，右子树最大，桥接值，当前值
+        maxV = Math.max(maxV,Math.max(leftValue,Math.max(rigthValue,value)));
+
+        //返回当前节点下的最大值，不包括桥接的，如果桥接了，那么必然与父节点断开了
+        return Math.max(Math.max(leftValue,rigthValue),root.val);
+    }
+}
